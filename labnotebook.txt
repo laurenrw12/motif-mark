@@ -1,1 +1,16 @@
 Lab Notebook
+
+Part 1 - 
+
+
+create an environment
+
+srun -A bgmp -p bgmp --time=0-3 --pty bash  
+conda create -n "QAA"
+
+
+
+
+
+
+ygcy -> cgcc, cgct, cgcu, tgcc, tgct, tgcu, ugcc, ugct, ugcu
