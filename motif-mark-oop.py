@@ -168,7 +168,7 @@ width = longest_seq + VALUE_TO_CENTER*2 + 125
 height = (GENE_GROUP_HEIGHT * len(fasta_dict)) + 50
 
 #create image surface 
-surface = cairo.ImageSurface (cairo.FORMAT_ARGB32, width, height)
+surface = cairo.ImageSurface(cairo.FORMAT_ARGB32, width, height)
 context = cairo.Context(surface)
 context.set_source_rgb(1, 1, 1) #white 
 context.paint()
