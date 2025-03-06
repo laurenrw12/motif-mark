@@ -23,5 +23,7 @@ Conda Environment:
 This program is set to run in an environment called my_pycairo. The only package installed and necessary in this environment is pycairo.
 
 Using ```motif-mark.py -f <absolute path to fasta file> -m <absolute path to motif file>```:
+
 **-f**: The fasta file containing gene records. The absolute path to the fasta file is required for the script to run.
+
 **-m**: The motif text file containing one motif per line. The absolute path to the motif file is required for the script to run.
