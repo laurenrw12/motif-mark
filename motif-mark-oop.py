@@ -61,7 +61,7 @@ class Gene:
         context.stroke()
 
         #write header
-        context.select_font_face("Verdana", cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
+        context.select_font_face("Verdana", cairo.FONT_WEIGHT_BOLD)
         context.set_font_size(10)
         context.move_to(GENE_GROUP_HEIGHT/5, y - VALUE_TO_CENTER/2)
         context.show_text(self.gene_name)
@@ -92,7 +92,6 @@ class Motif:
     def draw(self, context):
         context.set_source_rgb(self.color[0], self.color[1], self.color[2]) 
         y = (GENE_GROUP_HEIGHT * self.gene_num) + VALUE_TO_CENTER/2
-        print(self.start)
         context.rectangle(self.start + VALUE_TO_CENTER, y + VALUE_TO_CENTER*1.25, self.end - self.start, FEATURE_HEIGHT)        #(x0,y0,x1,y1) (moves left to right, moves up and down, width of box, height of box)
         context.fill()
 
@@ -115,7 +114,7 @@ def find_exon(sequence: str) -> tuple:
     return (start, end)
 
 def possible_motifs(motif: str) -> str:
-    '''DOC STRING'''
+    '''Takes a motif, replaces ambigous nucleotides with regex expressions of possible nucleotides, and returns that regex expression.'''
     motif = motif.upper()
 
     for ambiguous_nucleotide, possible_nucleotides in IUPAC.items(): 
@@ -153,7 +152,6 @@ with open(m, "r") as mr:
             break
 
         motif_dict[line] = possible_motifs(line)
-
 
 ################################
 # Create Initial Image Surface #
@@ -206,28 +204,30 @@ context.set_source_rgba(0,0,0) #black
 context.select_font_face("Verdana", cairo.FONT_SLANT_NORMAL, cairo.FONT_WEIGHT_BOLD)
 
 #write title
-context.set_font_size(15)
-context.move_to(25, 25)
-context.show_text("Visualization of Motif Marks from " + args.f)
-context.set_font_size(10)
+context.set_font_size(20)
 context.move_to(25, 40)
-context.show_text("Created By: Lauren Williams: 03-03-2025")
+context.show_text("Visualization of Motif Marks from " + args.f)
 
 #write legend 
 x = width - 125
 context.set_font_size(10)
-context.move_to(x, 25)
+context.move_to(x, 40)
 context.show_text("MOTIF LEGEND")
 
 #draw boxes of colors and write out each motif name 
 for i, motif in enumerate(motif_dict):
+    #set font & color
+    context.select_font_face("Verdana", cairo.FONT_SLANT_NORMAL)
     context.set_source_rgb(COLOR_LIST[i][0], COLOR_LIST[i][1], COLOR_LIST[i][2])
+    
+    #make boxes 
     y = (i+1)*30 
-    context.rectangle(x, y + 10, 15, 15)        #(x0,y0,x1,y1) (moves left to right, moves up and down, width of box, height of box)
+    context.rectangle(x, y + 25, 15, 15)        #(x0,y0,x1,y1) (moves left to right, moves up and down, width of box, height of box)
     context.fill()
-
+    
+    #write motif names next to boxes
     context.set_font_size(10)
-    context.move_to(x + 20, y + 20)
+    context.move_to(x + 20, y + 35)
     context.show_text(motif)
 
 ###############
