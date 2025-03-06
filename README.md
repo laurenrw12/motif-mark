@@ -17,7 +17,7 @@ The input motif file should contain up to five motifs with one motif per line th
 The output of this tool is a .png file containing the pycairo figure. The output file will follow the same naming convention as the fasta file. For example, ["Figure_1.fasta"](https://github.com/laurenrw12/motif-mark/blob/main/Figure_1.txt) will output ["Figure_1.png"](https://github.com/laurenrw12/motif-mark/blob/main/Figure_1.png).
 
 ## Installation and Usage
-To use motif-mark, the user will need ```motif-mark-oop.py```, a fasta file, a motif text file, and the appropriate conda environment.
+To use motif-mark, the user will need [```motif-mark-oop.py```](https://github.com/laurenrw12/motif-mark/blob/main/motif-mark-oop.py), a fasta file, a motif text file, and the appropriate conda environment.
 
 Conda Environment:
 This program is set to run in an environment called my_pycairo. The only package installed and necessary in this environment is pycairo.
